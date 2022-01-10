@@ -1,16 +1,23 @@
-# Scrapy settings for baiduSearchSpider project
-#
-# For simplicity, this file contains only settings considered important or
-# commonly used. You can find more settings consulting the documentation:
-#
-#     https://docs.scrapy.org/en/latest/topics/settings.html
-#     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+# -*- coding: utf-8 -*-
 
 BOT_NAME = 'tiebaSearchSpider'
 
 SPIDER_MODULES = ['tiebaSearchSpider.spiders']
 NEWSPIDER_MODULE = 'tiebaSearchSpider.spiders'
+
+COOKIES_ENABLED = False
+TELNETCONSOLE_ENABLED = False
+LOG_LEVEL = 'ERROR'
+
+# 要搜索的关键词列表，可写多个, 值可以是由关键词或话题组成的列表，也可以是包含关键词的txt文件路径，
+# 如'keyword_list.txt'，txt文件中每个关键词占一行
+KEYWORD_LIST = ['成果狗哥']
+# KEYWORD_LIST = '../keywordlist.txt'
+# KEYWORD_LIST = ['File "F:\MyProjects\qianxin\tiebaSearchSpider\tiebaSearchSpider\spiders\tieba_search_spider.py", line 64, in parse']
+
+
+# 搜索结果的排序方式，0代表按时间倒序，1代表按时间顺序，2代表按相关性顺序，3代表只看主题贴
+SORTED_TYPE = 0
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'baiduSearchSpider (+http://www.yourdomain.com)'
