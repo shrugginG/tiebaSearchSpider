@@ -11,7 +11,7 @@ LOG_LEVEL = 'ERROR'
 
 # 要搜索的关键词列表，可写多个, 值可以是由关键词或话题组成的列表，也可以是包含关键词的txt文件路径，
 # 如'keyword_list.txt'，txt文件中每个关键词占一行
-KEYWORD_LIST = ['成果狗哥']
+KEYWORD_LIST = ['钓鱼短信', '钓鱼网站']
 # KEYWORD_LIST = '../keywordlist.txt'
 # KEYWORD_LIST = ['File "F:\MyProjects\qianxin\tiebaSearchSpider\tiebaSearchSpider\spiders\tieba_search_spider.py", line 64, in parse']
 
@@ -75,6 +75,7 @@ RANDOM_DELAY = 2  # 最大延时时间，我设置为15
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     # 'baiduSearchSpider.pipelines.BaiduSearchPipeline': 1,
+    'tiebaSearchSpider.pipelines.ElasticsearchPipeline': 3,
     'tiebaSearchSpider.pipelines.items_ToCSV': 2,
     'tiebaSearchSpider.pipelines.ImgsPipline': 1,
 }

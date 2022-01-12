@@ -17,5 +17,4 @@ class TiebaItem(scrapy.Item):
     visit_url = scrapy.Field()  # 链接地址
     reply_list = scrapy.Field()  # 主题帖回复内容
     image_urls = scrapy.Field()
-    images = scrapy.Field()
     image_paths = scrapy.Field()

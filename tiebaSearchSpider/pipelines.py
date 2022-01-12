@@ -13,6 +13,7 @@ from scrapy.pipelines.images import ImagesPipeline
 import scrapy.pipelines
 from itemadapter import ItemAdapter
 import urllib.request
+from tiebaSearchSpider.es_type.tieba_type import TiebaType
 
 
 # 通过设置timeout参数用于解决ConnectionResetError问题
@@ -97,4 +98,15 @@ class ImgsPipline(ImagesPipeline):
             raise DropItem("Item contains no images")
         adapter = ItemAdapter(item)
         adapter['tieba_item']['image_paths'] = image_paths
+        return item
+
+
+class ElasticsearchPipeline(object):
+    # 将数据写入到ES中
+    def process_item(self, item, spider):
+        tieba = TiebaType()
+        for key in item['tieba_item'].keys():
+            setattr(tieba, key, item['tieba_item'][key])
+        tieba.save()
+
         return item
